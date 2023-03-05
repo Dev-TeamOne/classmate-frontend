@@ -1,23 +1,13 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CheckboxSize } from './types';
 
-export interface Props {
-  defaultChecked?: boolean;
-  checked?: boolean;
+export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: CheckboxSize;
-  disabled?: boolean;
   label?: string;
 }
 
-function Checkbox({
-  defaultChecked = false,
-  checked,
-  size = 'medium',
-  disabled = false,
-  label,
-  ...rest
-}: Props) {
+function Checkbox({ checked, size = 'medium', disabled = false, label, ...rest }: Props) {
   return (
     <CheckboxWrapper size={size}>
       <div>

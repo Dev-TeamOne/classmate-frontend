@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   primary1: '#1F747D',
   primary2: '#D9EEF0',
   primary3: '#1F747D',
@@ -10,6 +10,8 @@ const colors = {
   titleActive: '#000000',
   white: '#FFFFFF',
   background: '#F9F9F9',
+  red: '#F53C17',
+  orange: '#F79D13',
 };
 
 const shadow = {
@@ -38,3 +40,5 @@ export const theme = {
   typo,
   fontWeight,
 };
+
+export type colors = Record<keyof typeof colors, string>;

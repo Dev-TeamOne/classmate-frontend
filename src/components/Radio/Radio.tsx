@@ -1,39 +1,39 @@
 import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { CheckboxSize } from './types';
+import { RadioSize } from './types';
 
 export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  size?: CheckboxSize;
+  size?: RadioSize;
   label?: string;
 }
 
-function Checkbox({ checked, size = 'medium', disabled = false, label, ...rest }: Props) {
+function Radio({ checked, size = 'medium', disabled = false, label, ...rest }: Props) {
   return (
-    <CheckboxWrapper size={size}>
+    <RadioWrapper size={size}>
       <div>
         <input type='radio' disabled={disabled} checked={checked} {...rest} />
         {label ? <span>{label}</span> : null}
       </div>
-    </CheckboxWrapper>
+    </RadioWrapper>
   );
 }
 
-export default Checkbox;
+export default Radio;
 
-type CheckboxProps = {
-  size: CheckboxSize;
+type RadioProps = {
+  size: RadioSize;
 };
 
-const CheckboxWrapper = styled.div<CheckboxProps>`
-  --checkbox-size: ${(props) => (props.size === 'small' ? '15px' : '25px')};
-  --checkbox-margin-right: ${(props) => (props.size === 'small' ? '27px' : '16px')};
-  --checkbox-border: ${(props) => (props.size === 'small' ? '1.5px' : '2.5px')};
-  --checkbox-font-size: ${(props) =>
+const RadioWrapper = styled.div<RadioProps>`
+  --radio-size: ${(props) => (props.size === 'small' ? '15px' : '25px')};
+  --radio-margin-right: ${(props) => (props.size === 'small' ? '27px' : '16px')};
+  --radio-border: ${(props) => (props.size === 'small' ? '1.5px' : '2.5px')};
+  --radio-font-size: ${(props) =>
     props.size === 'small' ? props.theme.typo.xsmall : props.theme.typo.xsmall};
-  --checkbox-checked-circle-size: ${(props) => (props.size === 'small' ? '9px' : '17px')};
+  --radio-checked-circle-size: ${(props) => (props.size === 'small' ? '9px' : '17px')};
 
   display: inline-block;
-  margin-right: var(--checkbox-margin-right);
+  margin-right: var(--radio-margin-right);
 
   div {
     display: flex;
@@ -45,9 +45,9 @@ const CheckboxWrapper = styled.div<CheckboxProps>`
     -webkit-appearance: none;
     -moz-appearance: none;
     background-color: #ffff;
-    border: var(--checkbox-border) solid ${(props) => props.theme.colors.grey2};
-    width: var(--checkbox-size);
-    height: var(--checkbox-size);
+    border: var(--radio-border) solid ${(props) => props.theme.colors.grey2};
+    width: var(--radio-size);
+    height: var(--radio-size);
     border-radius: 100%;
     margin: 0px;
     display: flex;
@@ -70,20 +70,20 @@ const CheckboxWrapper = styled.div<CheckboxProps>`
     }
 
     &:checked {
-      border: var(--checkbox-border) solid ${(props) => props.theme.colors.primary1};
+      border: var(--radio-border) solid ${(props) => props.theme.colors.primary1};
       border-radius: 100%;
 
       &::before {
         position: absolute;
         content: '';
         background-color: ${(props) => props.theme.colors.primary1};
-        width: var(--checkbox-checked-circle-size);
-        height: var(--checkbox-checked-circle-size);
+        width: var(--radio-checked-circle-size);
+        height: var(--radio-checked-circle-size);
         border-radius: 100%;
       }
 
       &:disabled {
-        border: var(--checkbox-border) solid ${(props) => props.theme.colors.primary2};
+        border: var(--radio-border) solid ${(props) => props.theme.colors.primary2};
         &::before {
           background-color: ${(props) => props.theme.colors.primary2};
         }
@@ -92,7 +92,7 @@ const CheckboxWrapper = styled.div<CheckboxProps>`
   }
 
   span {
-    font-size: var(--checkbox-font-size);
+    font-size: var(--radio-font-size);
     font-weight: ${({ theme }) => theme.fontWeight.light};
     color: ${({ theme }) => theme.colors.grey1};
     line-height: 20px;

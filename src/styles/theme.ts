@@ -41,4 +41,4 @@ export const theme = {
   fontWeight,
 };
 
-export type colors = Record<keyof typeof colors, string>;
+export type ColorType = Record<keyof typeof colors, string>;

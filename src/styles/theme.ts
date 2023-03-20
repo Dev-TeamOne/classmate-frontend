@@ -1,7 +1,8 @@
 export const colors = {
   primary1: '#4B9BFA',
-  primary2: '#F1FAFF',
+  primary2: '#BFDBFD',
   primary3: '#005DCC',
+  primary4: '#F1FAFF',
   error: '#F45452',
   offWhite: '#F6F6F6',
   grey3: '#D7D7D7',
@@ -16,6 +17,8 @@ export const colors = {
 
 const shadow = {
   dropdown: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  weak: `0px 3px 2px 0px #0000001A;
+  `,
 };
 
 const typo = {

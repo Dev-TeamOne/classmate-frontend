@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { BadgeSize, BadgeColor } from './types';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   size?: BadgeSize;
   color?: BadgeColor;
   text?: string;
@@ -10,7 +10,7 @@ interface Props {
 
 function Badge({ size = 'xsmall', color = 'primary1', text, ...rest }: Props) {
   return (
-    <BadgeLayout size={size} color={color}>
+    <BadgeLayout size={size} color={color} {...rest}>z
       {text}
     </BadgeLayout>
   );

@@ -1,4 +1,4 @@
-import { colors } from '../../styles/theme';
+import { ColorType } from '../../styles/theme';
 
 export type BadgeSize = 'xsmall';
-export type BadgeColor = keyof colors;
+export type BadgeColor = keyof ColorType;

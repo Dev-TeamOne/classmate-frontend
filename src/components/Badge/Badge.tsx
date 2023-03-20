@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 function Badge({ size = 'xsmall', color = 'primary1', text, ...rest }: Props) {
   return (
-    <BadgeLayout size={size} color={color} {...rest}>z
+    <BadgeLayout size={size} color={color} {...rest}>
       {text}
     </BadgeLayout>
   );

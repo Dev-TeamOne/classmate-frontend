@@ -5,12 +5,11 @@ import './index.css';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 import GlobalStyles from './styles/GlobalStyle';
-import Router from './Router';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Router />
+      <App />
       <GlobalStyles />
     </ThemeProvider>
   </React.StrictMode>,

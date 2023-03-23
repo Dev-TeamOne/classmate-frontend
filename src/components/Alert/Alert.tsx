@@ -18,7 +18,7 @@ function Alert({ theme = 'info', children, hasCloseButton = false, style, ...res
       }}
       {...rest}
     >
-      <Icon name='info-rounded' size={20} color={AlertColorByTheme[theme].icon} />
+      <Icon name={AlertIconByTheme[theme]} size={20} color={AlertColorByTheme[theme].icon} />
       <div>{children}</div>
       {hasCloseButton ? (
         <Icon name='close' size={12} color={'grey1'} className='alert-right-close-button' />
@@ -34,6 +34,13 @@ const AlertColorByTheme: Record<Theme, AlertColors> = {
   success: { background: '#F2FFEB', border: '#A0EB86', icon: '#00C021' },
   warning: { background: '#FFFBE3', border: '#FFE587', icon: '#FFA825' },
   error: { background: '#FFF0EE', border: '#FFC6C0', icon: '#FF464A' },
+};
+
+const AlertIconByTheme: Record<Theme, string> = {
+  info: 'info-rounded',
+  warning: 'info-rounded',
+  success: 'check-circle-rounded',
+  error: 'close-circle',
 };
 
 const AlertLayout = styled.div`

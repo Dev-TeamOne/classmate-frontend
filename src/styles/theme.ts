@@ -26,8 +26,8 @@ const typo = {
   xlarge: '28px',
   large: '18px',
   medium: '16px',
-  small: '16px',
-  xsmall: '14px',
+  small: '14px',
+  xsmall: '12px',
 };
 
 const fontWeight = {

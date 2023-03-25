@@ -4,20 +4,22 @@ import styled from 'styled-components';
 export interface SingleLineInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   multiline?: boolean;
   leftAddon?: ReactElement;
-  disabled?: boolean;
+  rightAddon?: ReactElement;
 }
 
 function TextField(props: SingleLineInputProps) {
   const {
     leftAddon,
+    rightAddon,
     placeholder = '플레이스 홀더',
     disabled = false,
     ...rest
   } = props as SingleLineInputProps;
   const left = leftAddon != null ? Children.only(leftAddon) : null;
+  const right = rightAddon != null ? Children.only(rightAddon) : null;
 
   return (
-    <InputWrapper disabled={disabled} leftAddon={leftAddon}>
+    <InputWrapper disabled={disabled} leftAddon={leftAddon} rightAddon={rightAddon}>
       {left != null
         ? cloneElement(left, {
             ...left.props,
@@ -30,13 +32,19 @@ function TextField(props: SingleLineInputProps) {
         disabled={disabled}
         {...(rest as SingleLineInputProps)}
       />
+      {right != null
+        ? cloneElement(right, {
+            ...right.props,
+            className: 'input-icon input-icon-right',
+          })
+        : null}
     </InputWrapper>
   );
 }
 
 export default TextField;
 
-type InputWrapperType = Pick<SingleLineInputProps, 'disabled' | 'leftAddon'>;
+type InputWrapperType = Pick<SingleLineInputProps, 'disabled' | 'leftAddon' | 'rightAddon'>;
 
 const InputWrapper = styled.div<InputWrapperType>`
   position: relative;
@@ -65,8 +73,14 @@ const InputWrapper = styled.div<InputWrapperType>`
     }
   }
 
+  .input-icon-right {
+    transform: translate(-250%, -50%);
+    margin-left: 0;
+  }
+
   input {
-    --textfield-padding: ${(props) => (props.leftAddon ? '30px 30px 30px 87px' : '30px')};
+    --textfield-padding: ${(props) =>
+      props.leftAddon ? '30px 30px 30px 70px' : props.rightAddon ? '30px 70px 30px 30px' : '30px'};
 
     background: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.grey3};

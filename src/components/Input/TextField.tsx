@@ -52,7 +52,7 @@ const InputWrapper = styled.div<InputWrapperType>`
 
   .input-icon {
     position: absolute;
-    margin-left: 30px;
+    margin-left: 20px;
     top: 50%;
     transform: translate(0, -50%);
     pointer-events: ${(props) => (props.disabled ? 'none' : 'inherit')};
@@ -74,13 +74,19 @@ const InputWrapper = styled.div<InputWrapperType>`
   }
 
   .input-icon-right {
-    transform: translate(-250%, -50%);
+    transform: translate(-210%, -50%);
     margin-left: 0;
   }
 
   input {
+    width: -webkit-fill-available;
+
     --textfield-padding: ${(props) =>
-      props.leftAddon ? '30px 30px 30px 70px' : props.rightAddon ? '30px 70px 30px 30px' : '30px'};
+      props.leftAddon
+        ? '19px 20px 19px 60px'
+        : props.rightAddon
+        ? '19px 60px 19px 20px'
+        : ' 19px 20px'};
 
     background: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.grey3};

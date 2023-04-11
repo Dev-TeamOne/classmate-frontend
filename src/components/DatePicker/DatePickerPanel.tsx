@@ -86,6 +86,8 @@ const PickerPanel = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
+  position: absolute;
+  z-index: 1;
 `;
 
 const PickerHeader = styled.div`

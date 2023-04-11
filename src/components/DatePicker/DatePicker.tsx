@@ -6,9 +6,11 @@ import DatePickerPanel from './DatePickerPanel';
 import { getStringDateValue } from './utils';
 import useModal from '../../hooks/useModal';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {}
+export interface Props extends HTMLAttributes<HTMLDivElement> {
+  width?: number;
+}
 
-function DatePicker({ ...rest }: Props) {
+function DatePicker({ width = 330, ...rest }: Props) {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   const { ref, isOpen, setIsOpen, handleClickInside } = useModal({ initialMode: false });
@@ -26,13 +28,16 @@ function DatePicker({ ...rest }: Props) {
         rightAddon={<Icon name='calendar' color='grey2' size={20} />}
         onClick={handleClickInside}
       />
-      {isOpen ? (
-        <DatePickerPanel
-          selectedDate={selectedDate}
-          onDateClick={onDateClick}
-          onClick={handleClickInside}
-        />
-      ) : null}
+      <div>
+        {isOpen ? (
+          <DatePickerPanel
+            selectedDate={selectedDate}
+            onDateClick={onDateClick}
+            onClick={handleClickInside}
+            style={{ width: width && `${width - 10}px` }}
+          />
+        ) : null}
+      </div>
     </DatePickerWrapper>
   );
 }
@@ -40,7 +45,6 @@ function DatePicker({ ...rest }: Props) {
 export default DatePicker;
 
 const DatePickerWrapper = styled.div`
-  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 4px;

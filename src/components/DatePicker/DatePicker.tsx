@@ -24,6 +24,7 @@ function DatePicker({ width = 330, ...rest }: Props) {
   return (
     <DatePickerWrapper ref={ref} {...rest}>
       <Input
+        readOnly
         value={getStringDateValue(selectedDate)}
         rightAddon={<Icon name='calendar' color='grey2' size={20} />}
         onClick={handleClickInside}

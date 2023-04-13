@@ -28,12 +28,14 @@ function Calendar({ currentDate, selectedDate, onDateClick, ...rest }: Props) {
   const rows = [];
   let days = [];
   let day = startDate;
+  let row = 0;
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       const cloneDay = day;
       days.push(
         <td
+          key={format(day, 'd')}
           className={`col ${
             !isSameMonth(day, monthStart)
               ? 'disabled'
@@ -52,8 +54,13 @@ function Calendar({ currentDate, selectedDate, onDateClick, ...rest }: Props) {
       );
       day = addDays(day, 1);
     }
-    rows.push(<tr className='row'>{days}</tr>);
+    rows.push(
+      <tr className='row' key={row}>
+        {days}
+      </tr>,
+    );
     days = [];
+    row += 1;
   }
   return <TableBody {...rest}>{rows}</TableBody>;
 }

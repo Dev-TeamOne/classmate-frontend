@@ -1,4 +1,11 @@
-import { HTMLAttributes, ReactElement, useState } from 'react';
+import {
+  Dispatch,
+  HTMLAttributes,
+  ForwardedRef,
+  ReactElement,
+  SetStateAction,
+  forwardRef,
+} from 'react';
 import styled from 'styled-components';
 import IconButton from '../IconButton';
 import Button from '../Button';
@@ -10,31 +17,51 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   bottomAddon?: ReactElement;
   leftButtonLabel?: string;
   rightButtonLabel?: string;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  onSubmit?: () => void;
 }
 
-function Modal({
-  open,
-  title,
-  children,
-  bottomAddon,
-  withCloseButton = true,
-  leftButtonLabel = 'Cancel',
-  rightButtonLabel = 'Create',
-  ...rest
-}: Props) {
+function Modal(
+  {
+    open,
+    title,
+    children,
+    bottomAddon,
+    withCloseButton = true,
+    leftButtonLabel = 'Cancel',
+    rightButtonLabel = 'Create',
+    setIsOpen,
+    onSubmit,
+    ...rest
+  }: Props,
+  ref: ForwardedRef<any>,
+) {
+  const closeModal = () => setIsOpen?.(false);
+
+  const submitModal = () => {
+    onSubmit?.();
+    closeModal();
+  };
+
   return open ? (
     <ModalBackDrop>
-      <ModalContainer {...rest}>
+      <ModalContainer ref={ref} {...rest}>
         <ModalHeader>
           <span>{title}</span>
-          {withCloseButton && <IconButton name='close' size={20} color={'grey1'} />}
+          {withCloseButton && (
+            <IconButton name='close' size={20} color={'grey1'} onClick={closeModal} />
+          )}
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
         <ModalFooter>
           {bottomAddon ? bottomAddon : <div></div>}
           <FooterButtonSet>
-            <Button variant={'outlined'}>{leftButtonLabel}</Button>
-            <Button variant={'contained'}>{rightButtonLabel}</Button>
+            <Button variant={'outlined'} onClick={closeModal}>
+              {leftButtonLabel}
+            </Button>
+            <Button variant={'contained'} onClick={submitModal}>
+              {rightButtonLabel}
+            </Button>
           </FooterButtonSet>
         </ModalFooter>
       </ModalContainer>
@@ -44,7 +71,7 @@ function Modal({
   );
 }
 
-export default Modal;
+export default forwardRef(Modal);
 
 const ModalBackDrop = styled.div`
   width: 100vw;
@@ -53,6 +80,12 @@ const ModalBackDrop = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(96, 96, 96, 0.7);
+
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const ModalContainer = styled.div`

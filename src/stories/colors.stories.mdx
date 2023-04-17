@@ -1,0 +1,47 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { colors } from '../styles/theme';
+
+<Meta title='Getting Started/Palette' />
+
+# Colors
+
+<ColorPalette>
+  <ColorItem
+    title='primary1'
+    subtitle='서비스의 메인컬러로 사용'
+    colors={{ Primary1: '#4B9BFA' }}
+  />
+  <ColorItem
+    title='primary2'
+    subtitle='서비스의 보조컬러로 사용'
+    colors={{ Primary2: '#BFDBFD' }}
+  />
+  <ColorItem
+    title='primary3'
+    subtitle='서비스의 보조컬러로 사용'
+    colors={{ Primary3: '#005DCC' }}
+  />
+  <ColorItem
+    title='primary4'
+    subtitle='서비스의 보조컬러로 사용'
+    colors={{ Primary4: '#F1FAFF' }}
+  />
+  <ColorItem title='red' subtitle='오류 및 삭제 등에 사용' colors={{ Error: '#F45452' }} />
+  <ColorItem
+    title='titleActive'
+    subtitle='서비스의 보조컬러로 사용'
+    colors={{ TitleActive: '#000000' }}
+  />
+  <ColorItem
+    title='grey'
+    subtitle='greyscale'
+    colors={{ Grey1: '#888888', Grey2: '#BBBBBB', Grey3: '#D7D7D7' }}
+  />
+  <ColorItem title='offWhite' subtitle='서브 배경색으로 사용' colors={{ OffWhite: '#F6F6F6' }} />
+  <ColorItem title='White' subtitle='컴포넌트의 배경색으로 사용' colors={{ white: '#FFFFFF' }} />
+  <ColorItem
+    title='background'
+    subtitle='서비스의 배경색으로 사용'
+    colors={{ Background: '#F9F9F9' }}
+  />
+</ColorPalette>

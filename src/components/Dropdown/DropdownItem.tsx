@@ -1,7 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { ResetButton } from '../../styles/common';
-import { Item } from './types';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   option: Item;
@@ -25,6 +24,7 @@ const DropdownItemList = styled.li`
   font-size: ${({ theme }) => theme.typo.small};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   color: ${({ theme }) => theme.colors.titleActive};
+  list-style: none;
 `;
 
 type ItemButtonProps = Pick<Props, 'isSelected'>;

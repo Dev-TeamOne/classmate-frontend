@@ -1,6 +1,5 @@
-import React, { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { RadioSize } from './types';
 
 export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: RadioSize;

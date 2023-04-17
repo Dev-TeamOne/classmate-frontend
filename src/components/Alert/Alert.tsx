@@ -1,14 +1,22 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import Icon from '../Icon';
-import { AlertColors, Theme } from './types';
+import IconButton from '../IconButton/IconButton';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   theme?: Theme;
   hasCloseButton?: boolean;
+  onClickClose?: () => void;
 }
 
-function Alert({ theme = 'info', children, hasCloseButton = false, style, ...rest }: Props) {
+function Alert({
+  theme = 'info',
+  children,
+  hasCloseButton = false,
+  style,
+  onClickClose,
+  ...rest
+}: Props) {
   return (
     <AlertLayout
       style={{
@@ -21,7 +29,13 @@ function Alert({ theme = 'info', children, hasCloseButton = false, style, ...res
       <Icon name={AlertIconByTheme[theme]} size={20} color={AlertColorByTheme[theme].icon} />
       <div>{children}</div>
       {hasCloseButton ? (
-        <Icon name='close' size={12} color={'grey1'} className='alert-right-close-button' />
+        <IconButton
+          name='close'
+          size={12}
+          color={'grey1'}
+          className='alert-right-close-button'
+          onClick={onClickClose}
+        />
       ) : null}
     </AlertLayout>
   );

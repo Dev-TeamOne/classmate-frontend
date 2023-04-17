@@ -51,7 +51,11 @@ function TextArea(props: MultiLineInputProps) {
             className: 'textarea-icon',
           })
         : null}
-      {isFocused && <span className='text-count-label'>{textCount}/160</span>}
+      {isFocused && (
+        <span className='text-count-label'>
+          {textCount}/{maxLength}
+        </span>
+      )}
     </TextareaWrapper>
   );
 }

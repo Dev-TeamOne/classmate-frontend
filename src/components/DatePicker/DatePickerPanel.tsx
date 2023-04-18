@@ -49,7 +49,7 @@ function DatePickerPanel({ selectedDate, onDateClick, ...rest }: Props) {
           <thead>
             <tr>
               {days.map((dayName: string) => (
-                <th>{dayName}</th>
+                <th key={dayName}>{dayName}</th>
               ))}
             </tr>
           </thead>
@@ -86,6 +86,8 @@ const PickerPanel = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
+  position: absolute;
+  z-index: 1;
 `;
 
 const PickerHeader = styled.div`

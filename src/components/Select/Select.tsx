@@ -64,4 +64,5 @@ const Selector = styled.span`
   color: ${({ theme }) => theme.shadow.titleActive};
   font-size: ${({ theme }) => theme.typo.large};
   font-weight: ${({ theme }) => theme.fontWeight.text};
+  line-height: 21px;
 `;

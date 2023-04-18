@@ -10,7 +10,7 @@ export const colors = {
   grey1: '#888888',
   titleActive: '#000000',
   white: '#FFFFFF',
-  background: '#F9F9F9',
+  background: '#F7F9FA',
   red: '#F53C17',
   orange: '#F79D13',
 };

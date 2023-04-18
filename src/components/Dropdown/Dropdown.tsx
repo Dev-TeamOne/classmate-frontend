@@ -31,7 +31,7 @@ function Dropdown({ selected, options, onClickOption, style, children, ...rest }
   useEffect(() => setVisible(trigger), [trigger]);
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <DropdownTrigger onClickTrigger={onClickTrigger}>{children as ReactElement}</DropdownTrigger>
       <DropdownContainer
         ref={ref}

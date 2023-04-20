@@ -1,6 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { ButtonSize } from './types';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'text' | 'contained' | 'outlined';

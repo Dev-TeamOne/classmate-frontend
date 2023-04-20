@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import DropdownItem from './DropdownItem';
 import DropdownTrigger from './DropdownTrigger';
-import { Item } from './types';
 
 export interface Props extends HTMLAttributes<HTMLUListElement> {
   selected?: Item;

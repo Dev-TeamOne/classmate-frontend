@@ -1,0 +1,16 @@
+import React from 'react';
+import { Meta, IconGallery, IconItem } from '@storybook/blocks';
+import Icon from '../components/Icon';
+import { icons } from '../components/Icon/utils';
+
+<Meta title='Getting Started/Icons' />
+
+# IconGallery
+
+<IconGallery style={{ marginTop: '50px' }}>
+  {icons.map((key) => (
+    <IconItem name={key}>
+      <Icon name={key} />
+    </IconItem>
+  ))}
+</IconGallery>

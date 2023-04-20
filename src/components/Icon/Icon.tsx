@@ -1,12 +1,11 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, CSSProperties } from 'react';
 import styled from 'styled-components';
 import useDynamicSVGImport from '../../hooks/useDynamicSvgImport';
 import { colors, ColorType } from '../../styles/theme';
-import { isHexColorString } from '../../utils/common';
 
 export interface Props extends HTMLAttributes<HTMLSpanElement> {
   name: string;
-  color?: keyof ColorType | string;
+  color?: keyof ColorType | CSSProperties['color'];
   size?: number;
 }
 
@@ -27,11 +26,7 @@ function Icon({ name, color, size = 24, style, ...rest }: Props) {
           style={{
             width: '100%',
             height: '100%',
-            color: color
-              ? isHexColorString(color)
-                ? color
-                : colors[color as keyof ColorType]
-              : undefined,
+            color: color ? (color in colors ? colors[color as keyof ColorType] : color) : undefined,
           }}
         />
       ) : null}

@@ -1,6 +1,5 @@
 import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { ToggleSize } from './types';
 
 export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: ToggleSize;
@@ -77,6 +76,7 @@ const ToggleSwitch = styled.label<ToggleSwitchType>`
 
   input:disabled + span {
     background-color: ${({ theme }) => theme.colors.offWhite};
+    cursor: not-allowed;
   }
 
   input:disabled + span:before {

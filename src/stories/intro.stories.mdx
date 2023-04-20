@@ -1,0 +1,43 @@
+import React from 'react';
+import { Meta } from '@storybook/blocks';
+import IconButton from '../components/IconButton';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../styles/theme';
+
+<Meta title='Getting Started/Intro' />
+
+<section style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>
+
+# Classmate Design System
+
+### Design foundations and components library
+
+<div style={{ padding: '20px' }}>
+  <ThemeProvider theme={theme}>
+    <IconButton
+      name='github'
+      onClick={() => window.open('https://github.com/Dev-TeamOne/classmate-frontend', '_blank')}
+    />
+  </ThemeProvider>
+</div>
+
+</section>
+
+## Getting Started
+
+Classmate는 실시간으로 강연자와 청중을 연결해주는 크라우드소싱 플랫폼입니다. 스토리북을 통해 UI에 사용되는 컴포넌트들을 테스트 해볼 수 있습니다.
+
+### Install
+
+```
+git clone https://github.com/Dev-TeamOne/classmate-frontend.git
+yarn && yarn storybook
+```
+
+## References
+
+[Github](https://github.com/Dev-TeamOne)
+
+[UI-Design](https://www.figma.com/file/MMPKJgUWaE5lbRxQzHDycJ/Classmate?node-id=73-1760&t=3xpZO33ms2zuejzm-0)
+
+[Classmate-team-notion](https://shy-cannon-6ec.notion.site/Dev-TeamOne-76767fce51764a35abe0c562753e580c)

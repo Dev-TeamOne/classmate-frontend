@@ -1,0 +1,1 @@
+type RadioSize = 'medium' | 'small';

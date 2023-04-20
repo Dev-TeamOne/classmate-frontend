@@ -1,0 +1,1 @@
+type ToggleSize = 'medium' | 'small';

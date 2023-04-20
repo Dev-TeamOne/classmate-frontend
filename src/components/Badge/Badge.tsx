@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, CSSProperties } from 'react';
 import styled from 'styled-components';
-import { BadgeSize, BadgeColor } from './types';
+import { ColorType, colors } from '../../styles/theme';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   size?: BadgeSize;
@@ -10,7 +10,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 function Badge({ size = 'xsmall', color = 'primary1', text, ...rest }: Props) {
   return (
-    <BadgeLayout size={size} color={color} {...rest}>
+    <BadgeLayout
+      size={size}
+      color={color in colors ? colors[color as keyof ColorType] : color}
+      {...rest}
+    >
       {text}
     </BadgeLayout>
   );
@@ -18,11 +22,11 @@ function Badge({ size = 'xsmall', color = 'primary1', text, ...rest }: Props) {
 
 interface BadgeProps {
   size: BadgeSize;
-  color: BadgeColor;
+  color: CSSProperties['color'];
 }
 
 const BadgeLayout = styled.div<BadgeProps>`
-  --badge-background-color: ${(props) => props.theme.colors[props.color]};
+  --badge-background-color: ${(props) => props.color};
   --badge-font-size: ${(props) => props.theme.typo[props.size]};
   --badge-width: ${(props) => (props.size === 'xsmall' ? '116px' : '174px')};
   --badge-height: ${(props) => (props.size === 'xsmall' ? '35px' : '52.5px')};

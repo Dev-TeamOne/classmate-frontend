@@ -1,6 +1,6 @@
 import { HTMLAttributes, useRef, Fragment, useState, useEffect, ReactElement } from 'react';
 import styled from 'styled-components';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
+import useDropdownPosition from '../../hooks/useDropdownPosition';
 import DropdownItem from './DropdownItem';
 import DropdownTrigger from './DropdownTrigger';
 
@@ -14,13 +14,12 @@ function Dropdown({ selected, options, onClickOption, style, children, ...rest }
   const [trigger, setTrigger] = useState<boolean>(false);
 
   const ref = useRef<HTMLUListElement>(null);
-  const [visible, setVisible] = useState<boolean>(false);
-
-  const onFocusOutDropdown = () => setVisible(false);
+  const outerRef = useRef<HTMLDivElement>(null);
 
   const onClickTrigger = () => setTrigger(!trigger);
 
-  useOnClickOutside(ref, onFocusOutDropdown);
+  const { coords, visible, setVisible } = useDropdownPosition(outerRef, ref);
+  const { x, y } = coords;
 
   const onClickOptionItem = (opt: Item) => {
     onClickOption?.(opt);
@@ -30,11 +29,16 @@ function Dropdown({ selected, options, onClickOption, style, children, ...rest }
   useEffect(() => setVisible(trigger), [trigger]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }} ref={outerRef}>
       <DropdownTrigger onClickTrigger={onClickTrigger}>{children as ReactElement}</DropdownTrigger>
       <DropdownContainer
         ref={ref}
-        style={{ visibility: visible ? 'visible' : 'hidden', ...style }}
+        style={{
+          visibility: visible ? 'visible' : 'hidden',
+          marginTop: y,
+          marginLeft: x,
+          ...style,
+        }}
         {...rest}
       >
         {options.map((opt: Item, idx: number) => (
@@ -65,6 +69,9 @@ const DropdownContainer = styled.ul`
   padding: 3px;
   position: absolute;
   margin-top: 8px;
+  z-index: 1;
+  display: block;
+  width: max-content;
 `;
 
 const BreakLine = styled.hr`

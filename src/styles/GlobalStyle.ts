@@ -130,6 +130,16 @@ const GlobalStyles = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+  background-color: #f7f9fa;
+}
+
 `;
 
 export default GlobalStyles;

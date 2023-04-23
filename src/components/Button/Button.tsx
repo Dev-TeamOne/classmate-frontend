@@ -46,7 +46,7 @@ const ButtonTemplate: any = styled.button<ButtonProps>`
   --button-padding: ${(props) =>
     props.size === 'large' ? '18px 36px' : props.size === 'medium' ? '14px 25px' : '8px 20px'};
   --button-font-size: ${(props) =>
-    props.size === 'large' ? '24px' : props.size === 'medium' ? '22px' : '20px'};
+    props.size === 'large' ? '24px' : props.size === 'medium' ? '18px' : '14px'};
   --button-border: ${(props) =>
     props.disabled ? props.theme.colors.primary2 : props.theme.colors.primary1};
   --button-hover-color: #f7fafd;

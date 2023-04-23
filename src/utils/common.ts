@@ -6,3 +6,9 @@ export const isHexColorString = (hex: string) => {
   }
   return true;
 };
+
+export const convertToChannelCode = (code: string) => {
+  return `${code.substring(0, 3)}-${code.substring(3, 6)}-${code.substring(6, 9)}`;
+};
+
+export const classmateGithubURL = 'https://github.com/Dev-TeamOne';

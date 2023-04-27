@@ -80,12 +80,17 @@ function MainPage() {
             </section>
           </>
         ) : (
+          <>
             <section style={{ marginBottom: '100px' }}>
               <ChannelTitleSection>
                 <ChannelTitle>What is <span>Classmate</span>?</ChannelTitle>
               </ChannelTitleSection>
-              <IntroductionGrid list={introduction}></IntroductionGrid>              
+              <IntroductionGrid list={introduction} />
             </section>
+            <section style={{textAlign: 'center'}}>
+              <Button>Join Classmate</Button>
+            </section>
+          </>
         )}
       </Main>
       <Footer />

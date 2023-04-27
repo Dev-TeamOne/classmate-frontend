@@ -4,25 +4,25 @@ import styled from 'styled-components';
 import { Box } from '../../styles/common';
 import Icon from '../../components/Icon/Icon';
 
-export interface Props extends HTMLAttributes<HTMLTableElement> {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
     list: Array<Introduction>;
   }
 
 function IntroductionGrid({ list, ...rest }: Props) {
     return (
-        <Container>
-          {list?.map((item: Introduction, index: number) => (
-            <Item key={index}>
-              <ItemHeader>
-                <Icon name={item.icon} size={35} color={'primary1'} />
-                <div>{item.title}</div>
-              </ItemHeader>
-              <ItemBody>
-                {item.contents}
-              </ItemBody>
-            </Item>
-          ))}
-        </Container>
+          <Container {...rest}>
+            {list?.map((item: Introduction, index: number) => (
+              <Item key={index}>
+                <ItemHeader>
+                  <Icon name={item.icon} size={35} color={'primary1'} />
+                  <div>{item.title}</div>
+                </ItemHeader>
+                <ItemBody>
+                  {item.contents}
+                </ItemBody>
+              </Item>
+            ))}
+          </Container>
     )
 }
 
@@ -33,7 +33,7 @@ const Container = styled.div`
 `;
     
 const Item = styled(Box)`
-  margin: 0 40px 40px 0;
+  margin: 20px;
   width: 658px;
   height: 341px;
   border-radius: 30px;

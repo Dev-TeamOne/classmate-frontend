@@ -34,4 +34,13 @@ export const icons: Array<string> = [
   'star-fill',
   'star-outline',
   'users',
-];
+  'chart-bar',
+  'chart-donut',
+  'chart-pie',
+  'intro-analytics',
+  'intro-poll',
+  'intro-question-answer',
+  'intro-quiz',
+  'round-play-circle',
+  'round-stop-circle',
+].sort();

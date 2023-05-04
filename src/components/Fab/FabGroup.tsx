@@ -9,23 +9,32 @@ import {
 } from 'react';
 import Fab from './Fab';
 import styled from 'styled-components';
+import { Props as FabProps } from './Fab';
 
 type FabGroupChild = ReactElement<ComponentProps<typeof Fab>> | null;
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props
+  extends HTMLAttributes<HTMLDivElement>,
+    Pick<FabProps, 'type' | 'iconName' | 'position'> {
   children: FabGroupChild | FabGroupChild[];
   trigger?: ButtonTrigger;
-  position?: FabPosition;
 }
 
-function FabGroup({ children, trigger = 'none', position = 'left', ...rest }: Props) {
+function FabGroup({
+  children,
+  trigger = 'none',
+  position = 'left',
+  type,
+  iconName,
+  ...rest
+}: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const validChildren = Children.toArray(children).filter(isValidElement) as Array<
     NonNullable<FabGroupChild>
   >;
 
   const FabGroupItems = validChildren.map((child) => {
-    return cloneElement(child, { type: 'icon' });
+    return cloneElement(child, { shape: 'icon', position: 'none' });
   });
 
   return (
@@ -37,7 +46,10 @@ function FabGroup({ children, trigger = 'none', position = 'left', ...rest }: Pr
       ) : (
         <>
           <Fab
-            type='circle'
+            shape='circle'
+            position='none'
+            type={type}
+            iconName={iconName}
             onClick={() => trigger === 'click' && setIsOpen(!isOpen)}
             onMouseEnter={() => trigger === 'hover' && setIsOpen(!isOpen)}
             onMouseLeave={() => trigger === 'hover' && setIsOpen(!isOpen)}
@@ -55,10 +67,10 @@ export default FabGroup;
 
 const FABWrapper = styled.div<Pick<Props, 'position'>>`
   display: flex;
-  position: fixed;
+  position: ${({ position }) => position !== 'none' && 'fixed'};
   left: ${({ position }) => position === 'left' && '2em'};
   right: ${({ position }) => position === 'right' && '2em'};
-  bottom: 2em;
+  bottom: ${({ position }) => position !== 'none' && '2em'};
 `;
 
 const FABGroup = styled.div<{ isTriggered: boolean; isOpen?: boolean }>`

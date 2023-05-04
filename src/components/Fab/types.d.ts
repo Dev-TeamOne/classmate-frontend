@@ -1,5 +1,7 @@
 type ButtonTrigger = 'click' | 'hover' | 'none';
 
-type FabButtonType = 'circle' | 'icon';
+type FabButtonShape = 'circle' | 'icon';
 
-type FabPosition = 'left' | 'right';
+type FabButtonType = 'default' | 'primary';
+
+type FabPosition = 'left' | 'right' | 'none';

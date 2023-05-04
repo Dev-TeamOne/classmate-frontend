@@ -40,12 +40,12 @@ function MainPage() {
       contents: `Give everyone a chance to ask their questions, whether they're on mute or too shy to speak up. People can ask anonymously and vote for the questions they like, bringing the most important topics to light.`,
     },
     {
-      icon: `quiz2`,
+      icon: `intro-quiz`,
       title: `Quizzes`,
       contents: `Bring a bit of fun to your meetings or training sessions. Create a live quiz or trivia game and test people's knowledge in an interactive way.`,
     },
     {
-      icon: `graph-analytic`,
+      icon: `intro-analytics`,
       title: `Analytics`,
       contents: `Get valuable insights from your meetings with Slido Analytics. Find out how many people were engaged and export your questions or voting results for further analysis.`,
     },

@@ -43,4 +43,5 @@ export const icons: Array<string> = [
   'intro-quiz',
   'round-play-circle',
   'round-stop-circle',
+  'like-outline',
 ].sort();

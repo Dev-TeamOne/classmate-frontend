@@ -9,7 +9,10 @@ function QnAPage() {
   return (
     <Container>
       <Header title='Q&A' onClickMenu={() => setOpen(!open)} />
-      <Sidebar activeMenu='Q&A' open={open} />
+      <Main>
+        <Sidebar activeMenu='Q&A' open={open} />
+        <Contents>{/* 메인 부분 */}</Contents>
+      </Main>
     </Container>
   );
 }
@@ -20,4 +23,13 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: hidden;
+`;
+
+const Main = styled.main`
+  display: flex;
+  height: inherit;
+`;
+
+const Contents = styled.section`
+  width: 100%;
 `;

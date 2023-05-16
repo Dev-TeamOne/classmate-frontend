@@ -18,22 +18,23 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   max?: number;
   total?: number;
   children: AvatarGroupChild | AvatarGroupChild[];
+  size?: number;
 }
 
-function AvatarGroup({ max = 5, total, children, ...rest }: Props) {
+function AvatarGroup({ max = 5, total, size, children, ...rest }: Props) {
   const validChildren = Children.toArray(children).filter(isValidElement) as Array<
     NonNullable<AvatarGroupChild>
   >;
 
   const AvatarGroupItems = validChildren.map((child) => {
-    return cloneElement(child, { style: { border: '1px solid white' } });
+    return cloneElement(child, { style: { border: '1px solid white' }, size: size });
   });
 
   return (
     <AvatarGroupContainer {...rest}>
       {AvatarGroupItems.slice(0, max - 1)}
       {total || max ? (
-        <Avatar color='#bdbdbd' style={{ border: '1px solid white', fontSize: '14px' }}>
+        <Avatar color='#bdbdbd' style={{ border: '1px solid white', fontSize: '14px' }} size={size}>
           +{total ? total - max : AvatarGroupItems.length - max + 1}
         </Avatar>
       ) : null}

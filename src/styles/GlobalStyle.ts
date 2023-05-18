@@ -140,6 +140,11 @@ body {
   background-color: #f7f9fa;
 }
 
+#root {
+  width:100%;
+  height: 100%;
+}
+
 `;
 
 export default GlobalStyles;

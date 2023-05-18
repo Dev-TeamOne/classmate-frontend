@@ -38,11 +38,9 @@ function FabGroup({
   });
 
   return (
-    <FABWrapper position={position}>
+    <FABWrapper position={position} {...rest}>
       {trigger === 'none' ? (
-        <FABGroup isTriggered={false} {...rest}>
-          {FabGroupItems}
-        </FABGroup>
+        <FABGroup isTriggered={false}>{FabGroupItems}</FABGroup>
       ) : (
         <>
           <Fab
@@ -54,7 +52,7 @@ function FabGroup({
             onMouseEnter={() => trigger === 'hover' && setIsOpen(!isOpen)}
             onMouseLeave={() => trigger === 'hover' && setIsOpen(!isOpen)}
           />
-          <FABGroup isTriggered={true} isOpen={isOpen} {...rest}>
+          <FABGroup isTriggered={true} isOpen={isOpen}>
             {FabGroupItems}
           </FABGroup>
         </>
@@ -71,6 +69,7 @@ const FABWrapper = styled.div<Pick<Props, 'position'>>`
   left: ${({ position }) => position === 'left' && '2em'};
   right: ${({ position }) => position === 'right' && '2em'};
   bottom: ${({ position }) => position !== 'none' && '2em'};
+  z-index: 1;
 `;
 
 const FABGroup = styled.div<{ isTriggered: boolean; isOpen?: boolean }>`
@@ -78,11 +77,11 @@ const FABGroup = styled.div<{ isTriggered: boolean; isOpen?: boolean }>`
   background: rgba(0, 0, 0, ${({ isTriggered }) => (isTriggered ? 0.5 : 0.7)});
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
-  height: 55px;
+  height: 50px;
   width: fit-content;
   padding: ${({ isTriggered }) => (isTriggered ? '0 30px 0 75px' : '0 30px')};
   justify-content: center;
   gap: 24px;
-  margin-left: ${({ isTriggered }) => isTriggered && '-55px'};
+  margin-left: ${({ isTriggered }) => isTriggered && '-50px'};
   visibility: ${({ isOpen, isTriggered }) => isTriggered && (isOpen ? 'visible' : 'hidden')};
 `;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import { CommonFab } from '../components/layouts';
 
 function PollPage() {
   const [open, setOpen] = useState<boolean>(true);
@@ -11,7 +12,9 @@ function PollPage() {
       <Header title='Polls' onClickMenu={() => setOpen(!open)} />
       <Main>
         <Sidebar activeMenu='Polls' open={open} />
-        <Contents>{/* 메인 부분 */}</Contents>
+        <Contents>
+          <CommonFab />
+        </Contents>
       </Main>
     </Container>
   );
@@ -32,4 +35,5 @@ const Main = styled.main`
 
 const Contents = styled.section`
   width: 100%;
+  height: 100%;
 `;

@@ -94,8 +94,8 @@ const FabIconButton = styled.button`
 `;
 
 const FabCircleButton = styled.button<{ buttonColor: 'primary1' | 'white' }>`
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: none;
   background-color: ${({ theme, buttonColor }) => theme.colors[buttonColor]};

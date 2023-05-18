@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import { CommonFab } from '../components/layouts';
 
 function QnAPage() {
   const [open, setOpen] = useState<boolean>(true);
@@ -11,7 +12,9 @@ function QnAPage() {
       <Header title='Q&A' onClickMenu={() => setOpen(!open)} />
       <Main>
         <Sidebar activeMenu='Q&A' open={open} />
-        <Contents>{/* 메인 부분 */}</Contents>
+        <Contents>
+          <CommonFab />
+        </Contents>
       </Main>
     </Container>
   );

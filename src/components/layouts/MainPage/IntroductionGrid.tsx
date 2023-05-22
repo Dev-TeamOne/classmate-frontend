@@ -1,29 +1,27 @@
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 // TODO: 절대경로 (@styles, @components)
-import { Box } from '../../styles/common';
-import Icon from '../../components/Icon/Icon';
+import { Box } from '../../../styles/common';
+import Icon from '../../Icon/Icon';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-    list: Array<Introduction>;
-  }
+  list: Array<Introduction>;
+}
 
 function IntroductionGrid({ list, ...rest }: Props) {
-    return (
-          <Container {...rest}>
-            {list?.map((item: Introduction, index: number) => (
-              <Item key={index}>
-                <ItemHeader>
-                  <Icon name={item.icon} size={35} color={'primary1'} />
-                  <div>{item.title}</div>
-                </ItemHeader>
-                <ItemBody>
-                  {item.contents}
-                </ItemBody>
-              </Item>
-            ))}
-          </Container>
-    )
+  return (
+    <Container {...rest}>
+      {list?.map((item: Introduction, index: number) => (
+        <Item key={index}>
+          <ItemHeader>
+            <Icon name={item.icon} size={35} color={'primary1'} />
+            <div>{item.title}</div>
+          </ItemHeader>
+          <ItemBody>{item.contents}</ItemBody>
+        </Item>
+      ))}
+    </Container>
+  );
 }
 
 const Container = styled.div`
@@ -31,7 +29,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
-    
+
 const Item = styled(Box)`
   margin: 20px;
   width: 658px;

@@ -12,7 +12,7 @@ import BackgroundImage from '../assets/images/background.png';
 import Button from '../components/Button/Button';
 import useModal from '../hooks/useModal';
 import { useState } from 'react';
-import IntroductionGrid from '../layouts/MainPage/IntroductionGrid';
+import IntroductionGrid from '../components/layouts/MainPage/IntroductionGrid';
 
 function MainPage() {
   const { ref, isOpen, setIsOpen } = useModal({ initialMode: false });
@@ -83,11 +83,13 @@ function MainPage() {
           <>
             <section style={{ marginBottom: '100px' }}>
               <ChannelTitleSection>
-                <ChannelTitle>What is <span>Classmate</span>?</ChannelTitle>
+                <ChannelTitle>
+                  What is <span>Classmate</span>?
+                </ChannelTitle>
               </ChannelTitleSection>
               <IntroductionGrid list={introduction} />
             </section>
-            <section style={{textAlign: 'center'}}>
+            <section style={{ textAlign: 'center' }}>
               <Button>Join Classmate</Button>
             </section>
           </>

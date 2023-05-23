@@ -2,11 +2,10 @@ import { withKnobs } from '@storybook/addon-knobs';
 import Steps from './Steps';
 
 /**
- * Steps은 옵션들 가운데 값을 선택하는 컴포넌트입니다.
+ * Steps는 작업의 단계를 통해 사용자에게 안내하는 탐색 모음입니다.
  *
- * 드롭다운 컴포넌트를 이용해 선택지를 보여주며, 인풋 창에서 검색은 불가합니다.
- * 드롭다운 컴포넌트와 같은 방식으로 옵션들을 정의할 수 있어
- * 구분선을 통해 그룹핑이 가능하고, 강조되는 문구는 빨간색으로 나타냅니다.
+ * 주어진 작업이 복잡하거나 일련의 하위 작업에서 정해진 순서가 있는 경우 작업을 더 쉽게 만들기 위해 여러 단계로 분해할 수 있습니다.
+ * 가로와 세로 두 가지 형태로 이용 가능합니다.
  */
 
 export default {
@@ -14,7 +13,7 @@ export default {
   component: Steps,
   decorators: [withKnobs],
   parameters: {
-    componentSubtitle: '셀렉트 컴포넌트',
+    componentSubtitle: 'Steps 컴포넌트',
   },
 };
 

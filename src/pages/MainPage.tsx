@@ -1,16 +1,16 @@
-import Modal from '../components/Modal/Modal';
-import DatePicker from '../components/DatePicker/DatePicker';
-import Input from '../components/Input/Input';
-import Select from '../components/Select';
+import Modal from '@components/Modal/Modal';
+import DatePicker from '@components/DatePicker/DatePicker';
+import Input from '@components/Input/Input';
+import Select from '@components/Select';
 import styled from 'styled-components';
-import Alert from '../components/Alert/Alert';
-import ChannelList from '../components/ChannelList/ChannelList';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
+import Alert from '@components/Alert/Alert';
+import ChannelList from '@components/ChannelList/ChannelList';
+import Footer from '@components/Footer/Footer';
+import Header from '@components/Header/Header';
 import { ReactComponent as LogoImage } from '../assets/logos/logo-with-name-white.svg';
 import BackgroundImage from '../assets/images/background.png';
-import Button from '../components/Button/Button';
-import useModal from '../hooks/useModal';
+import Button from '@components/Button/Button';
+import useModal from '@hooks/useModal';
 
 function MainPage() {
   const { ref, isOpen, setIsOpen } = useModal({ initialMode: false });

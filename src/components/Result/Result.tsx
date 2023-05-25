@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import Icon from '../Icon';
+import Icon from '@components/Icon';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   status?: Status;

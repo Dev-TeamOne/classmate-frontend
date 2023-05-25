@@ -1,8 +1,7 @@
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
-import Result from './Result';
-import { action } from '@storybook/addon-actions';
-import Flex from '../Flex/Flex';
-import Button from '../Button';
+import Result from '@components/Result';
+import Flex from '@components/Flex/Flex';
+import Button from '@components/Button';
 
 /**
  * Result는 일련의 운영 작업 결과를 피드백하는 데 사용됩니다.

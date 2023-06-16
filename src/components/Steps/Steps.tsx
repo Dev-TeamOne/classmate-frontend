@@ -37,22 +37,28 @@ export default Steps;
 
 const StepsWrapper = styled.div<{ direction: StepDirection }>`
   display: flex;
+  justify-content: space-between;
   gap: ${({ direction }) => (direction === 'horizontal' ? '20px' : '50px')};
   flex-direction: ${({ direction }) => (direction === 'horizontal' ? 'row' : 'column')};
-  width: fit-content;
+  width: 100%;
 `;
 
 const StepItem = styled.div<{ direction: StepDirection }>`
   display: flex;
   gap: 30px;
   align-items: center;
-  max-width: 410px;
+  flex-grow: 1;
+
+  :not(:last-child) {
+    flex-grow: 2;
+  }
 
   :not(:last-child)::after {
     display: ${({ direction }) => (direction === 'horizontal' ? 'block' : 'none')};
     content: '';
     background-color: ${({ theme }) => theme.colors.primary1};
-    width: 150px;
+    min-width: 10px;
+    width: -webkit-fill-available;
     height: 1px;
   }
 `;
@@ -84,6 +90,8 @@ const StepItemCircle = styled.div<{ isActive: boolean }>`
 `;
 
 const StepItemContent = styled.div<{ isActive: boolean }>`
+  flex-shrink: 0;
+
   h6 {
     font-size: ${({ theme }) => theme.typo.small};
     color: ${({ theme, isActive }) => (isActive ? theme.colors.titleActive : theme.colors.grey1)};

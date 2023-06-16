@@ -22,8 +22,8 @@ const shadow = {
 };
 
 const typo = {
-  xxlarge: '32px',
-  xlarge: '28px',
+  xxlarge: '28px',
+  xlarge: '24px',
   large: '18px',
   medium: '16px',
   small: '14px',

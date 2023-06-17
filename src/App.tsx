@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainPage from './pages/MainPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Main, Poll, QnA } from './pages';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,7 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path='/' element={<Main />} />
+        <Route path='/qna' element={<QnA />} />
+        <Route path='/polls' element={<Poll />} />
       </Routes>
     </BrowserRouter>
   );
